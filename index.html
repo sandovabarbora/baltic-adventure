@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baltic States & Finland Adventure Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#78716c',
+                        secondary: '#f59e0b',
+                        accent: '#10b981',
+                        'warm-orange': '#fb923c'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #78716c 0%, #10b981 50%, #f59e0b 100%);
+        }
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #f59e0b);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-sm border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-bold text-stone-800">Baltic Adventure Guide</h1>
+                <div class="flex space-x-6">
+                    <a href="#overview" class="text-stone-600 hover:text-accent transition-colors">Přehled</a>
+                    <a href="#itinerary" class="text-stone-600 hover:text-accent transition-colors">Itinerář</a>
+                    <a href="#budget" class="text-stone-600 hover:text-accent transition-colors">Rozpočet</a>
+                    <a href="#packing" class="text-stone-600 hover:text-accent transition-colors">Balení</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-stone-800 overflow-hidden">
+        <div class="absolute inset-0 gradient-bg opacity-80"></div>
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-balance">
+                Baltic States & Finland
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-stone-100 text-pretty">
+                Udržitelné cestování skrze severní Evropu • 10.-19. října 2025
+            </p>
+            
+            <!-- Countdown Timer -->
+            <div class="bg-black/20 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/10">
+                <p class="text-lg mb-4 text-stone-200">Zbývá do odjezdu:</p>
+                <div class="grid grid-cols-4 gap-4 text-center" id="countdown">
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <div class="text-2xl font-bold" id="days">0</div>
+                        <div class="text-sm text-stone-300">dní</div>
+                    </div>
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <div class="text-2xl font-bold" id="hours">0</div>
+                        <div class="text-sm text-stone-300">hodin</div>
+                    </div>
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <div class="text-2xl font-bold" id="minutes">0</div>
+                        <div class="text-sm text-stone-300">minut</div>
+                    </div>
+                    <div class="bg-white/10 rounded-lg p-3">
+                        <div class="text-2xl font-bold" id="seconds">0</div>
+                        <div class="text-sm text-stone-300">sekund</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sustainable Travel Badge -->
+            <div class="inline-flex items-center bg-accent/20 text-white px-4 py-2 rounded-full border border-accent/30">
+                <span class="text-2xl mr-2">🌱</span>
+                <span>Eco-friendly • Sustainable • Local</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-stone-800">Přehled cesty</h2>
+            
+            <!-- Cities Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-2xl border border-amber-200">
+                    <div class="text-3xl mb-3">🏰</div>
+                    <h3 class="text-xl font-bold mb-2 text-amber-800">Vilnius</h3>
+                    <p class="text-amber-700 text-sm mb-3">10.-12. října</p>
+                    <p class="text-stone-600 text-sm">Historické centrum UNESCO, barokní architektura</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-2xl border border-emerald-200">
+                    <div class="text-3xl mb-3">🏛️</div>
+                    <h3 class="text-xl font-bold mb-2 text-emerald-800">Riga</h3>
+                    <p class="text-emerald-700 text-sm mb-3">12.-15. října</p>
+                    <p class="text-stone-600 text-sm">Art Nouveau, Jurmala, centrální trh</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border border-orange-200">
+                    <div class="text-3xl mb-3">🏰</div>
+                    <h3 class="text-xl font-bold mb-2 text-orange-800">Tallinn</h3>
+                    <p class="text-orange-700 text-sm mb-3">15.-17. října</p>
+                    <p class="text-stone-600 text-sm">Středověké město, digitální inovace</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-2xl border border-teal-200">
+                    <div class="text-3xl mb-3">🌊</div>
+                    <h3 class="text-xl font-bold mb-2 text-teal-800">Helsinki</h3>
+                    <p class="text-teal-700 text-sm mb-3">17.-19. října</p>
+                    <p class="text-stone-600 text-sm">Skandinávský design, sauny, ostrovy</p>
+                </div>
+            </div>
+
+            <!-- Sustainable Travel Tips -->
+            <div class="bg-stone-100 rounded-2xl p-8 border border-stone-200">
+                <h3 class="text-2xl font-bold mb-6 text-stone-800 flex items-center">
+                    <span class="text-3xl mr-3">🌱</span>
+                    Udržitelné cestování
+                </h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🚂</span>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Vlaky a MHD</h4>
+                            <p class="text-stone-600 text-sm">Preferujeme železniční dopravu a místní MHD</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🏨</span>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Eco ubytování</h4>
+                            <p class="text-stone-600 text-sm">Hostely a hotely s certifikací udržitelnosti</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🍽️</span>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Lokální kuchyně</h4>
+                            <p class="text-stone-600 text-sm">Místní restaurace a farmářské trhy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Itinerary -->
+    <section id="itinerary" class="py-16 bg-stone-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-stone-800">Detailní itinerář</h2>
+            
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center mb-8 bg-stone-200 rounded-xl p-2">
+                <button class="tab-btn active px-6 py-3 rounded-lg font-medium transition-all" data-tab="vilnius">Vilnius</button>
+                <button class="tab-btn px-6 py-3 rounded-lg font-medium transition-all" data-tab="riga">Riga</button>
+                <button class="tab-btn px-6 py-3 rounded-lg font-medium transition-all" data-tab="tallinn">Tallinn</button>
+                <button class="tab-btn px-6 py-3 rounded-lg font-medium transition-all" data-tab="helsinki">Helsinki</button>
+            </div>
+
+            <!-- Vilnius Tab -->
+            <div id="vilnius" class="tab-content">
+                <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-8 border border-amber-200">
+                    <h3 class="text-3xl font-bold mb-6 text-amber-800 flex items-center">
+                        <span class="text-4xl mr-3">🏰</span>
+                        Vilnius, Litva
+                    </h3>
+                    
+                    <!-- Day 1 -->
+                    <div class="collapsible mb-6">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-amber-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-amber-800">Den 1 - Čtvrtek 10. října</h4>
+                                <span class="text-amber-600">▼</span>
+                            </div>
+                            <p class="text-amber-700 mt-1">Příjezd a první procházka</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-amber-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">✈️</span>
+                                    <div>
+                                        <p class="font-semibold">06:00 - Odlet z Prahy</p>
+                                        <p class="text-stone-600 text-sm">Let Ryanair FR6384, přílet 09:25</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚌</span>
+                                    <div>
+                                        <p class="font-semibold">10:00 - Transfer do centra</p>
+                                        <p class="text-stone-600 text-sm">Bus 88 z letiště (2€), cesta 45 min</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏨</span>
+                                    <div>
+                                        <p class="font-semibold">11:30 - Check-in Hostel Jamaika</p>
+                                        <p class="text-stone-600 text-sm">Kalvarijų g. 9, 4-lůžkový pokoj</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🍽️</span>
+                                    <div>
+                                        <p class="font-semibold">12:30 - Oběd v Lokys</p>
+                                        <p class="text-stone-600 text-sm">Tradiční litevská kuchyně, ~15€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">14:00 - Vilniuská katedrála</p>
+                                        <p class="text-stone-600 text-sm">Vstup zdarma, prohlídka 1 hodina</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏰</span>
+                                    <div>
+                                        <p class="font-semibold">15:30 - Gediminas Tower</p>
+                                        <p class="text-stone-600 text-sm">Vstup 5€, výhled na město</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚶</span>
+                                    <div>
+                                        <p class="font-semibold">17:00 - Procházka Starým městem</p>
+                                        <p class="text-stone-600 text-sm">UNESCO památka, barokní architektura</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="collapsible mb-6">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-amber-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-amber-800">Den 2 - Pátek 11. října</h4>
+                                <span class="text-amber-600">▼</span>
+                            </div>
+                            <p class="text-amber-700 mt-1">Trakai a Užupis</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-amber-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚂</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Výlet do Trakai</p>
+                                        <p class="text-stone-600 text-sm">Vlak z hlavního nádraží, 35 min, 3€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏰</span>
+                                    <div>
+                                        <p class="font-semibold">10:00 - Trakai Castle</p>
+                                        <p class="text-stone-600 text-sm">Vstup 8€, gotický hrad na ostrově</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🍽️</span>
+                                    <div>
+                                        <p class="font-semibold">12:00 - Kibinai oběd</p>
+                                        <p class="text-stone-600 text-sm">Tradiční karaim pastry, ~8€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚂</span>
+                                    <div>
+                                        <p class="font-semibold">15:00 - Návrat do Vilniusu</p>
+                                        <p class="text-stone-600 text-sm">Vlak zpět, příjezd 15:35</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎨</span>
+                                    <div>
+                                        <p class="font-semibold">16:30 - Užupis čtvrť</p>
+                                        <p class="text-stone-600 text-sm">Bohémská čtvrť umělců, "republika"</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🍺</span>
+                                    <div>
+                                        <p class="font-semibold">19:00 - Večeře v Šnekutis</p>
+                                        <p class="text-stone-600 text-sm">Místní pivnice, tradiční jídla</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="collapsible">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-amber-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-amber-800">Den 3 - Sobota 12. října</h4>
+                                <span class="text-amber-600">▼</span>
+                            </div>
+                            <p class="text-amber-700 mt-1">Odjezd do Rigy</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-amber-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">☕</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Snídaně v kavárně</p>
+                                        <p class="text-stone-600 text-sm">Café de Paris, croissanty a káva</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🛍️</span>
+                                    <div>
+                                        <p class="font-semibold">10:00 - Hales Market</p>
+                                        <p class="text-stone-600 text-sm">Nákup suvenýrů a místních produktů</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎒</span>
+                                    <div>
+                                        <p class="font-semibold">11:30 - Check-out z hostelu</p>
+                                        <p class="text-stone-600 text-sm">Úschova zavazadel do odjezdu</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚌</span>
+                                    <div>
+                                        <p class="font-semibold">14:30 - Autobus do Rigy</p>
+                                        <p class="text-stone-600 text-sm">Lux Express, 4.5h cesta, 25€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏨</span>
+                                    <div>
+                                        <p class="font-semibold">19:30 - Příjezd do Rigy</p>
+                                        <p class="text-stone-600 text-sm">Check-in Naughty Squirrel Hostel</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riga Tab -->
+            <div id="riga" class="tab-content hidden">
+                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-8 border border-emerald-200">
+                    <h3 class="text-3xl font-bold mb-6 text-emerald-800 flex items-center">
+                        <span class="text-4xl mr-3">🏛️</span>
+                        Riga, Lotyšsko
+                    </h3>
+                    
+                    <!-- Day 4 -->
+                    <div class="collapsible mb-6">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-emerald-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-emerald-800">Den 4 - Neděle 13. října</h4>
+                                <span class="text-emerald-600">▼</span>
+                            </div>
+                            <p class="text-emerald-700 mt-1">Jurmala a Art Nouveau</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-emerald-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚂</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Vlak do Jurmaly</p>
+                                        <p class="text-stone-600 text-sm">Z centrálního nádraží, 30 min, 3€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏖️</span>
+                                    <div>
+                                        <p class="font-semibold">10:00 - Dzintari Beach</p>
+                                        <p class="text-stone-600 text-sm">Procházka po pláži Baltského moře</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏘️</span>
+                                    <div>
+                                        <p class="font-semibold">11:00 - Jomas Street</p>
+                                        <p class="text-stone-600 text-sm">Dřevěná architektura, kavárny</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">12:30 - Jurmala City Museum</p>
+                                        <p class="text-stone-600 text-sm">Historie lázeňského města, 4€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚂</span>
+                                    <div>
+                                        <p class="font-semibold">14:00 - Návrat do Rigy</p>
+                                        <p class="text-stone-600 text-sm">Vlak zpět do centra</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">15:30 - Art Nouveau čtvrť</p>
+                                        <p class="text-stone-600 text-sm">Alberta iela, UNESCO památka</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏪</span>
+                                    <div>
+                                        <p class="font-semibold">17:00 - Central Market</p>
+                                        <p class="text-stone-600 text-sm">Největší trh v Evropě, místní produkty</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 -->
+                    <div class="collapsible mb-6">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-emerald-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-emerald-800">Den 5 - Pondělí 14. října</h4>
+                                <span class="text-emerald-600">▼</span>
+                            </div>
+                            <p class="text-emerald-700 mt-1">Staré město a muzea</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-emerald-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏰</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Riga Castle</p>
+                                        <p class="text-stone-600 text-sm">Sídlo prezidenta, muzeum historie</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">⛪</span>
+                                    <div>
+                                        <p class="font-semibold">10:30 - Dóm sv. Jakuba</p>
+                                        <p class="text-stone-600 text-sm">Největší středověký kostel v Pobaltí</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">12:00 - House of Blackheads</p>
+                                        <p class="text-stone-600 text-sm">Gotická architektura, vstup 9€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🍽️</span>
+                                    <div>
+                                        <p class="font-semibold">13:30 - Oběd v Folkklub</p>
+                                        <p class="text-stone-600 text-sm">Tradiční lotyšská kuchyně</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎨</span>
+                                    <div>
+                                        <p class="font-semibold">15:00 - Latvian National Museum</p>
+                                        <p class="text-stone-600 text-sm">Historie a kultura, vstup 7€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🌉</span>
+                                    <div>
+                                        <p class="font-semibold">17:00 - Procházka po Daugavě</p>
+                                        <p class="text-stone-600 text-sm">Nábřeží řeky, výhled na město</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 6 -->
+                    <div class="collapsible">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-emerald-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-emerald-800">Den 6 - Úterý 15. října</h4>
+                                <span class="text-emerald-600">▼</span>
+                            </div>
+                            <p class="text-emerald-700 mt-1">Odjezd do Tallinnu</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-emerald-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">☕</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Snídaně v MiiT Coffee</p>
+                                        <p class="text-stone-600 text-sm">Specialty coffee a pastry</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🛍️</span>
+                                    <div>
+                                        <p class="font-semibold">10:00 - Nákupy suvenýrů</p>
+                                        <p class="text-stone-600 text-sm">Vecrīga, místní řemesla</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎒</span>
+                                    <div>
+                                        <p class="font-semibold">11:30 - Check-out</p>
+                                        <p class="text-stone-600 text-sm">Úschova zavazadel</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚌</span>
+                                    <div>
+                                        <p class="font-semibold">15:00 - Autobus do Tallinnu</p>
+                                        <p class="text-stone-600 text-sm">Lux Express, 4h cesta, 28€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏨</span>
+                                    <div>
+                                        <p class="font-semibold">19:30 - Příjezd do Tallinnu</p>
+                                        <p class="text-stone-600 text-sm">Check-in Hostel Euphoria</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tallinn Tab -->
+            <div id="tallinn" class="tab-content hidden">
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 border border-orange-200">
+                    <h3 class="text-3xl font-bold mb-6 text-orange-800 flex items-center">
+                        <span class="text-4xl mr-3">🏰</span>
+                        Tallinn, Estonsko
+                    </h3>
+                    
+                    <!-- Day 7 -->
+                    <div class="collapsible mb-6">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-orange-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-orange-800">Den 7 - Středa 16. října</h4>
+                                <span class="text-orange-600">▼</span>
+                            </div>
+                            <p class="text-orange-700 mt-1">Středověké město</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-orange-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏰</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Toompea Castle</p>
+                                        <p class="text-stone-600 text-sm">Parlament Estonska, výhled na město</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">⛪</span>
+                                    <div>
+                                        <p class="font-semibold">10:30 - Alexander Nevsky Cathedral</p>
+                                        <p class="text-stone-600 text-sm">Pravoslavný kostel, ruská architektura</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">11:30 - Tallinn Town Hall</p>
+                                        <p class="text-stone-600 text-sm">Gotická radnice, vstup 5€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🍽️</span>
+                                    <div>
+                                        <p class="font-semibold">13:00 - Oběd v Olde Hansa</p>
+                                        <p class="text-stone-600 text-sm">Středověká restaurace, atmosféra</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚶</span>
+                                    <div>
+                                        <p class="font-semibold">15:00 - Procházka hradbami</p>
+                                        <p class="text-stone-600 text-sm">Zachovalé městské opevnění</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎨</span>
+                                    <div>
+                                        <p class="font-semibold">16:30 - Telliskivi Creative City</p>
+                                        <p class="text-stone-600 text-sm">Kulturní čtvrť, galerie, kavárny</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 8 -->
+                    <div class="collapsible">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-orange-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-orange-800">Den 8 - Čtvrtek 17. října</h4>
+                                <span class="text-orange-600">▼</span>
+                            </div>
+                            <p class="text-orange-700 mt-1">Odjezd do Helsinek</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-orange-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Estonian History Museum</p>
+                                        <p class="text-stone-600 text-sm">Digitální inovace, vstup 8€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🛍️</span>
+                                    <div>
+                                        <p class="font-semibold">11:00 - Viru Centre</p>
+                                        <p class="text-stone-600 text-sm">Nákupní centrum, suvenýry</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎒</span>
+                                    <div>
+                                        <p class="font-semibold">12:30 - Check-out</p>
+                                        <p class="text-stone-600 text-sim">Úschova zavazadel</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">⛴️</span>
+                                    <div>
+                                        <p class="font-semibold">16:30 - Ferry do Helsinek</p>
+                                        <p class="text-stone-600 text-sm">Tallink Silja, 2h cesta, 35€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏨</span>
+                                    <div>
+                                        <p class="font-semibold">19:00 - Příjezd do Helsinek</p>
+                                        <p class="text-stone-600 text-sm">Check-in Hostel Suomenlinna</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Helsinki Tab -->
+            <div id="helsinki" class="tab-content hidden">
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-8 border border-teal-200">
+                    <h3 class="text-3xl font-bold mb-6 text-teal-800 flex items-center">
+                        <span class="text-4xl mr-3">🌊</span>
+                        Helsinki, Finsko
+                    </h3>
+                    
+                    <!-- Day 9 -->
+                    <div class="collapsible mb-6">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-teal-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-teal-800">Den 9 - Pátek 18. října</h4>
+                                <span class="text-teal-600">▼</span>
+                            </div>
+                            <p class="text-teal-700 mt-1">Skandinávský design a sauny</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-teal-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">⛪</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Temppeliaukio Church</p>
+                                        <p class="text-stone-600 text-sm">Skalní kostel, vstup 5€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏛️</span>
+                                    <div>
+                                        <p class="font-semibold">10:30 - Senate Square</p>
+                                        <p class="text-stone-600 text-sm">Helsinská katedrála, klasicismus</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏪</span>
+                                    <div>
+                                        <p class="font-semibold">12:00 - Market Square</p>
+                                        <p class="text-stone-600 text-sm">Kauppatori, místní produkty</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🍽️</span>
+                                    <div>
+                                        <p class="font-semibold">13:00 - Oběd v Savoy</p>
+                                        <p class="text-stone-600 text-sm">Alvar Aalto design, finská kuchyně</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎨</span>
+                                    <div>
+                                        <p class="font-semibold">15:00 - Design District</p>
+                                        <p class="text-stone-600 text-sm">Skandinávský design, butiky</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🧖</span>
+                                    <div>
+                                        <p class="font-semibold">18:00 - Löyly Sauna</p>
+                                        <p class="text-stone-600 text-sm">Moderní sauna u moře, 25€</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 10 -->
+                    <div class="collapsible">
+                        <button class="collapsible-header w-full text-left bg-white/50 p-4 rounded-lg border border-teal-200 hover:bg-white/70 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-xl font-bold text-teal-800">Den 10 - Sobota 19. října</h4>
+                                <span class="text-teal-600">▼</span>
+                            </div>
+                            <p class="text-teal-700 mt-1">Suomenlinna a odlet</p>
+                        </button>
+                        <div class="collapsible-content bg-white/30 p-6 rounded-b-lg border-x border-b border-teal-200">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">⛴️</span>
+                                    <div>
+                                        <p class="font-semibold">09:00 - Ferry na Suomenlinna</p>
+                                        <p class="text-stone-600 text-sm">Ostrovní pevnost UNESCO, 15 min</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🏰</span>
+                                    <div>
+                                        <p class="font-semibold">09:30 - Suomenlinna Museum</p>
+                                        <p class="text-stone-600 text-sm">Mořská pevnost, vstup 7€</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🚶</span>
+                                    <div>
+                                        <p class="font-semibold">11:00 - Procházka po ostrově</p>
+                                        <p class="text-stone-600 text-sm">Bastiony, výhled na Helsinki</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">⛴️</span>
+                                    <div>
+                                        <p class="font-semibold">13:00 - Návrat do centra</p>
+                                        <p class="text-stone-600 text-sm">Ferry zpět na Market Square</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">🎒</span>
+                                    <div>
+                                        <p class="font-semibold">14:00 - Check-out a transfer</p>
+                                        <p class="text-stone-600 text-sm">Autobus na letiště, 45 min</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-lg">✈️</span>
+                                    <div>
+                                        <p class="font-semibold">17:25 - Odlet do Prahy</p>
+                                        <p class="text-stone-600 text-sm">Finnair AY1412, přílet 18:35</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section id="budget" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-stone-800">Rozpočet cesty</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Budget Breakdown -->
+                <div class="bg-stone-100 rounded-2xl p-8 border border-stone-200">
+                    <h3 class="text-2xl font-bold mb-6 text-stone-800">Celkové náklady</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-medium">Doprava</span>
+                            <span class="font-bold text-accent">€180</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-medium">Ubytování</span>
+                            <span class="font-bold text-accent">€240</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-medium">Jídlo</span>
+                            <span class="font-bold text-accent">€300</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-medium">Aktivity</span>
+                            <span class="font-bold text-accent">€120</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <span class="font-medium">Ostatní</span>
+                            <span class="font-bold text-accent">€80</span>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="flex justify-between items-center p-4 bg-accent/10 rounded-lg">
+                                <span class="font-bold text-lg">Celkem</span>
+                                <span class="font-bold text-xl text-accent">€920</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Budget -->
+                <div class="bg-stone-100 rounded-2xl p-8 border border-stone-200">
+                    <h3 class="text-2xl font-bold mb-6 text-stone-800">Denní rozpočet</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">Průměr na den</span>
+                                <span class="font-bold">€92</span>
+                            </div>
+                            <div class="w-full bg-stone-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span>Snídaně</span>
+                                <span>€8-12</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Oběd</span>
+                                <span>€15-25</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Večeře</span>
+                                <span>€20-35</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Doprava/den</span>
+                                <span>€5-10</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Aktivity</span>
+                                <span>€10-20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing List -->
+    <section id="packing" class="py-16 bg-stone-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-stone-800">Eco-friendly balení</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Clothing -->
+                <div class="bg-white rounded-2xl p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold mb-4 text-stone-800 flex items-center">
+                        <span class="text-2xl mr-2">👕</span>
+                        Oblečení
+                    </h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Teplá bunda (bio bavlna)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Svetr z merino vlny</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Nepromokavá bunda</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Pohodlné boty na chůzi</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Čepice a rukavice</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Tech & Documents -->
+                <div class="bg-white rounded-2xl p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold mb-4 text-stone-800 flex items-center">
+                        <span class="text-2xl mr-2">📱</span>
+                        Tech & Dokumenty
+                    </h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Pas a EHIC karta</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Solární powerbanka</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Univerzální adaptér</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Offline mapy (Maps.me)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Cestovní pojištění</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Eco Essentials -->
+                <div class="bg-white rounded-2xl p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold mb-4 text-stone-800 flex items-center">
+                        <span class="text-2xl mr-2">🌱</span>
+                        Eco základy
+                    </h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Nerezová láhev na vodu</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Bambusové příbory</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Látková nákupní taška</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Pevný šampon a mýdlo</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="rounded border-stone-300">
+                            <span class="text-stone-700">Menstruační kalíšek</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Info -->
+    <footer class="bg-stone-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Nouzové kontakty</h3>
+                    <div class="space-y-2 text-stone-300">
+                        <p>Evropské číslo tísňového volání: <strong>112</strong></p>
+                        <p>Česká ambasáda ve Finsku: +358 9 684 6200</p>
+                        <p>Cestovní pojištění: +420 800 123 456</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Užitečné aplikace</h3>
+                    <div class="space-y-2 text-stone-300">
+                        <p>• Maps.me (offline mapy)</p>
+                        <p>• Google Translate</p>
+                        <p>• Citymapper (MHD)</p>
+                        <p>• XE Currency</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Důležité informace</h3>
+                    <div class="space-y-2 text-stone-300">
+                        <p>Měna: Euro (€)</p>
+                        <p>Časové pásmo: UTC+2</p>
+                        <p>Teploty: 8-15°C</p>
+                        <p>Východ slunce: 08:00</p>
+                        <p>Západ slunce: 18:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-stone-700 mt-8 pt-8 text-center text-stone-400">
+                <p>Baltic States & Finland Adventure Guide • Udržitelné cestování 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const tripDate = new Date('2025-10-10T06:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = tripDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="text-2xl font-bold">Cesta začala! 🎉</div>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.remove('hidden');
+            });
+        });
+
+        // Collapsible sections
+        document.querySelectorAll('.collapsible-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const arrow = header.querySelector('span:last-child');
+                
+                if (content.style.display === 'none' || content.style.display === '') {
+                    content.style.display = 'block';
+                    arrow.textContent = '▲';
+                } else {
+                    content.style.display = 'none';
+                    arrow.textContent = '▼';
+                }
+            });
+        });
+
+        // Initialize collapsible sections as closed
+        document.querySelectorAll('.collapsible-content').forEach(content => {
+            content.style.display = 'none';
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .tab-btn.active {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .tab-btn:not(.active) {
+            color: #57534e;
+        }
+        
+        .tab-btn:not(.active):hover {
+            background-color: #f5f5f4;
+        }
+    </style>
+</body>
+</html>

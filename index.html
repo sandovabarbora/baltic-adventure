@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baltic Eco Adventure 2025 🌿</title>
+    <title>Baltic Eco Adventure 2025 🌿 - Aktualizováno</title>
     
     <!-- Leaflet for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -139,6 +139,13 @@
             padding: 20px;
             margin: 15px 0;
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hotel-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .confirmed-badge {
@@ -151,6 +158,26 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+        }
+        
+        .hotel-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .hotel-links a {
+            padding: 5px 12px;
+            background: var(--eco-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .hotel-links a:hover {
+            background: var(--forest-dark);
         }
         
         /* Navigation Tabs Eco Style */
@@ -437,6 +464,32 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Warning box */
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .warning-box strong {
+            color: #dc2626;
+        }
+        
+        /* Success box */
+        .success-box {
+            background: #dcfce7;
+            border-left: 4px solid #16a34a;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .success-box strong {
+            color: #16a34a;
+        }
     </style>
 </head>
 <body>
@@ -470,31 +523,31 @@
             </div>
         </div>
 
-        <!-- Weather Widget -->
+        <!-- AKTUALIZOVANÉ Weather Widget -->
         <div class="weather-widget">
             <div class="weather-day">
                 <h3 style="color: var(--forest-dark);">Vilnius</h3>
                 <div style="font-size: 3rem;">🌤️</div>
-                <p style="font-size: 1.2rem; font-weight: 600;">11°C</p>
+                <p style="font-size: 1.2rem; font-weight: 600;">10-12°C</p>
                 <p style="color: #6b7280;">Občas déšť</p>
             </div>
             <div class="weather-day">
                 <h3 style="color: var(--forest-dark);">Riga</h3>
                 <div style="font-size: 3rem;">☁️</div>
-                <p style="font-size: 1.2rem; font-weight: 600;">10°C</p>
+                <p style="font-size: 1.2rem; font-weight: 600;">10°C/4°C</p>
                 <p style="color: #6b7280;">60% srážek</p>
             </div>
             <div class="weather-day">
                 <h3 style="color: var(--forest-dark);">Tallinn</h3>
                 <div style="font-size: 3rem;">🌧️</div>
-                <p style="font-size: 1.2rem; font-weight: 600;">9°C</p>
+                <p style="font-size: 1.2rem; font-weight: 600;">9°C/5°C</p>
                 <p style="color: #6b7280;">Často prší</p>
             </div>
             <div class="weather-day">
                 <h3 style="color: var(--forest-dark);">Helsinki</h3>
                 <div style="font-size: 3rem;">❄️</div>
-                <p style="font-size: 1.2rem; font-weight: 600;">8°C</p>
-                <p style="color: #6b7280;">Brzy tma</p>
+                <p style="font-size: 1.2rem; font-weight: 600;">6-9°C</p>
+                <p style="color: #6b7280;">Brzy tma (18:00)</p>
             </div>
         </div>
 
@@ -510,20 +563,24 @@
             </div>
         </div>
 
-        <!-- Hotels -->
+        <!-- Hotels - AKTUALIZOVANÉ s odkazy -->
         <div class="eco-card">
             <h2 style="color: var(--forest-dark); margin-bottom: 25px;">🏨 Vaše ubytování - vše potvrzeno!</h2>
             
-            <div class="hotel-card">
+            <div class="hotel-card" onclick="toggleHotelInfo('vilnius')">
                 <span class="confirmed-badge">✓ Potvrzeno</span>
                 <h3 style="color: var(--sunset-orange);">Best Western Vilnius</h3>
                 <p><strong>Check-in:</strong> Pá 10.10. | 14:00-20:00</p>
-                <p><strong>Check-out:</strong> Ne 12.10. | do 11:30</p>
+                <p><strong>Check-out:</strong> Ne 12.10. | do 12:00</p>
                 <p>📍 Konstitucijos pr. 14, Šnipiškės</p>
                 <p style="margin-top: 10px;"><strong>€194</strong> (4,862 Kč) • 2 noci</p>
-                <div class="eco-score" style="margin-top: 10px;">
-                    <span class="eco-leaf">🌿🌿🌿</span>
-                    <span>Snídaně v ceně • 15 min pěšky do centra</span>
+                <div class="success-box" style="margin-top: 10px;">
+                    <strong>✓ Snídaně v ceně!</strong> • 15 min pěšky do centra • Sauna & bazén
+                </div>
+                <div class="hotel-links">
+                    <a href="https://www.booking.com/hotel/lt/bwnaujasis.html" target="_blank">Booking.com</a>
+                    <a href="https://www.vilniushotel.eu/en/" target="_blank">Hotel Web</a>
+                    <a href="https://maps.google.com/?q=Konstitucijos+pr.+14+Vilnius" target="_blank">📍 Mapa</a>
                 </div>
             </div>
 
@@ -553,16 +610,24 @@
                 </div>
             </div>
 
-            <div class="hotel-card">
+            <div class="hotel-card" onclick="toggleHotelInfo('helsinki')">
                 <span class="confirmed-badge">✓ Potvrzeno</span>
                 <h3 style="color: #8b5cf6;">VALO Hotel & Work</h3>
                 <p><strong>Check-in:</strong> Pá 17.10. | 16:00-00:00</p>
                 <p><strong>Check-out:</strong> Ne 19.10. | do 12:00</p>
                 <p>📍 Mannerheimintie 109, Helsinki</p>
                 <p style="margin-top: 10px;"><strong>€186</strong> (4,645 Kč) • 2 noci</p>
+                <div class="warning-box" style="margin-top: 10px;">
+                    <strong>⚠️ BEZ SNÍDANĚ!</strong> • Ale máme super tipy na brunche níže!
+                </div>
                 <div class="eco-score" style="margin-top: 10px;">
                     <span class="eco-leaf">🌿🌿🌿🌿🌿</span>
-                    <span>Nordic eco-certified • Snídaně • Wellness</span>
+                    <span>Nordic eco-certified • Rooftop wellness • Sauna</span>
+                </div>
+                <div class="hotel-links">
+                    <a href="https://www.booking.com/hotel/fi/valo-helsinki-helsinki.html" target="_blank">Booking.com</a>
+                    <a href="https://valo.fi/en/" target="_blank">Hotel Web</a>
+                    <a href="https://maps.google.com/?q=Mannerheimintie+109+Helsinki" target="_blank">📍 Mapa</a>
                 </div>
             </div>
 
@@ -574,7 +639,8 @@
 
         <!-- Navigation -->
         <div class="eco-tabs">
-            <button class="eco-tab active" onclick="showTab('cafes')">☕ Kavárny</button>
+            <button class="eco-tab active" onclick="showTab('cafes')">☕ Kavárny & Snídaně</button>
+            <button class="eco-tab" onclick="showTab('helsinki-breakfast')">🥐 Helsinki Brunche</button>
             <button class="eco-tab" onclick="showTab('itinerary')">📅 Program</button>
             <button class="eco-tab" onclick="showTab('transport')">🚌 Doprava</button>
             <button class="eco-tab" onclick="showTab('budget')">💰 Rozpočet</button>
@@ -616,30 +682,6 @@
                         <p><strong>Brunch:</strong> €8-12</p>
                         <p style="color: var(--eco-primary); margin-top: 10px;">✓ All-day breakfast</p>
                     </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--earth-brown);">🥐 Backstage Café</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Hipster heaven</p>
-                        <p><strong>Must:</strong> Avokádový toast</p>
-                        <p><strong>Cena:</strong> €10-18</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Pražírna kávy</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--earth-brown);">🍳 Sugamour</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Vokiečių g., Instagram famous</p>
-                        <p><strong>Specialty:</strong> Dezerty & brunch</p>
-                        <p><strong>Cena:</strong> €10-20</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Sezónní dekorace</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--earth-brown);">☕ Café Montmartre</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Old Town</p>
-                        <p><strong>Vibe:</strong> French atmosphere</p>
-                        <p><strong>Must:</strong> Croissanty</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Terasa s výhledem</p>
-                    </div>
                 </div>
 
                 <div class="city-header riga-header">
@@ -662,38 +704,6 @@
                         <p><strong>Káva:</strong> €3-5</p>
                         <p style="color: var(--eco-primary); margin-top: 10px;">✓ Nordic minimalism</p>
                     </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--ocean-blue);">☕ Kalve Coffee</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">4 Espresso Rooms</p>
-                        <p><strong>Experience:</strong> 8 let pražení</p>
-                        <p><strong>Must:</strong> Filter coffee</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Nejlepší káva v Rize</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--ocean-blue);">🥐 Mīkla Bakery</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Art Nouveau district</p>
-                        <p><strong>Famous:</strong> Raspberry white choc</p>
-                        <p><strong>Bonus:</strong> Papoušci uvnitř!</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Courtyard seating</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--ocean-blue);">☕ Innocent Cafe</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">První brunch v Rize</p>
-                        <p><strong>Weekend:</strong> All-day breakfast</p>
-                        <p><strong>Cena:</strong> €8-15</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Vegan pizza!</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--ocean-blue);">🏪 Balti Jaama Turg</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Baltic Station Market</p>
-                        <p><strong>What:</strong> Food hall</p>
-                        <p><strong>Vibe:</strong> Modern & local</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Mnoho možností</p>
-                    </div>
                 </div>
 
                 <div class="city-header tallinn-header">
@@ -710,59 +720,132 @@
                     </div>
                     
                     <div class="coffee-card">
-                        <h4 style="color: var(--eco-secondary);">☕ Värav Coffee</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Väike Rannavärav 4</p>
-                        <p><strong>Brunch spot:</strong> Toast heaven</p>
-                        <p><strong>Must:</strong> Hummus toast</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Kokomo beans</p>
-                    </div>
-                    
-                    <div class="coffee-card">
                         <h4 style="color: var(--eco-secondary);">🏭 F-Hoone</h4>
                         <p style="color: #6b7280; font-size: 0.9rem;">Telliskivi Creative City</p>
                         <p><strong>Vibe:</strong> Industrial chic</p>
                         <p><strong>Menu:</strong> All-day breakfast</p>
                         <p style="color: var(--eco-primary); margin-top: 10px;">✓ Huge space</p>
                     </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--eco-secondary);">☕ The Brick Coffee</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Telliskivi</p>
-                        <p><strong>Focus:</strong> Specialty coffee</p>
-                        <p><strong>Best:</strong> Filter & cold brew</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Roastery on site</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--eco-secondary);">🍰 Pierre Chocolaterie</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Old Town courtyard</p>
-                        <p><strong>Special:</strong> Chocolate heaven</p>
-                        <p><strong>Vibe:</strong> Bohemian</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Hidden gem</p>
-                    </div>
-                    
-                    <div class="coffee-card">
-                        <h4 style="color: var(--eco-secondary);">🥞 Kompressor</h4>
-                        <p style="color: #6b7280; font-size: 0.9rem;">Old Town classic</p>
-                        <p><strong>Famous:</strong> Huge pancakes</p>
-                        <p><strong>Price:</strong> Budget friendly!</p>
-                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ 30 variací</p>
-                    </div>
-                </div>
-
-                <div class="eco-tip">
-                    <strong>☕ Coffee Culture Tips:</strong>
-                    <ul style="margin-top: 10px;">
-                        <li>Vilnius: Zkuste "šaltibarščiai" - studenou řepnou polévku</li>
-                        <li>Riga: Black Balsam v kávě - místní specialita</li>
-                        <li>Tallinn: "Kohuke" - tvarohový dezert v čokoládě (€0.50)</li>
-                        <li>Helsinki: Korvapuusti - finské skořicové šneky</li>
-                    </ul>
                 </div>
             </div>
         </div>
 
-        <!-- ITINERARY TAB -->
+        <!-- NEW HELSINKI BREAKFAST TAB -->
+        <div id="helsinki-breakfast" class="tab-content">
+            <div class="eco-card">
+                <h2 style="color: var(--forest-dark); margin-bottom: 25px;">🥐 Helsinki - Nejlepší snídaně & brunche</h2>
+                
+                <div class="warning-box">
+                    <strong>⚠️ VALO Hotel nemá snídani!</strong> Ale máme pro vás TOP tipy na nejlepší snídaňová místa v Helsinkách!
+                </div>
+                
+                <div class="city-header helsinki-header">
+                    <h3>TOP 10 Snídaňových míst v Helsinkách</h3>
+                </div>
+                
+                <div class="coffee-grid">
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🥖 Way Bakery</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Kallio district</p>
+                        <p><strong>Must try:</strong> Nejlepší sourdough v Helsinkách!</p>
+                        <p><strong>Vibe:</strong> New York/London hipster style</p>
+                        <p><strong>Cena:</strong> €12-18</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ All-day breakfast • Natural wines</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🧇 Levain</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Töölö & Punavuori (2 lokace)</p>
+                        <p><strong>Must:</strong> Waffle to share + savoury dish</p>
+                        <p><strong>Style:</strong> Californian brunch meets Paris</p>
+                        <p><strong>Cena:</strong> €15-20</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Organic • Pastel de nata</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">☕ Cafe Engel</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Senate Square (naproti katedrále!)</p>
+                        <p><strong>View:</strong> Helsinki Cathedral</p>
+                        <p><strong>Try:</strong> French combo nebo eggs & bacon</p>
+                        <p><strong>Cena:</strong> €12-18</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Perfect location!</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🍞 St. George Bakery</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 St. George Hotel</p>
+                        <p><strong>Best:</strong> Dark Levain bread!</p>
+                        <p><strong>Quality:</strong> Premium ingredients</p>
+                        <p><strong>Cena:</strong> €10-15</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Nejlepší chléb ve městě</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🥑 Green Hippo Café</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Několik lokací</p>
+                        <p><strong>Famous:</strong> Avocado toast (nejlepší!)</p>
+                        <p><strong>Style:</strong> Trendy & colorful</p>
+                        <p><strong>Cena:</strong> €10-16</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Summer terrace</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🥐 Ekberg 1852</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Bulevardi 9</p>
+                        <p><strong>History:</strong> Od roku 1852!</p>
+                        <p><strong>Breakfast:</strong> Buffet €15.90</p>
+                        <p><strong>Atmosphere:</strong> Classic Finnish</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Institution!</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">☕ Andante Coffee</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Fredrikinkatu</p>
+                        <p><strong>Best:</strong> Specialty coffee</p>
+                        <p><strong>If lucky:</strong> Croissants!</p>
+                        <p><strong>Cena:</strong> €4-8</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Coffee perfection</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🌊 Regatta</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Merikannontie (u moře)</p>
+                        <p><strong>Must:</strong> Cinnamon buns (€2!)</p>
+                        <p><strong>Vibe:</strong> Red cottage by the sea</p>
+                        <p><strong>Bonus:</strong> Campfire outside</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ True classic!</p>
+                    </div>
+                    
+                    <div class="coffee-card">
+                        <h4 style="color: #8b5cf6;">🍳 Tin Tin Tango</h4>
+                        <p style="color: #6b7280; font-size: 0.9rem;">📍 Töölö</p>
+                        <p><strong>Local:</strong> Töölö classic</p>
+                        <p><strong>Sets:</strong> Croissant/bagel combos</p>
+                        <p><strong>Cena:</strong> €8-12</p>
+                        <p style="color: var(--eco-primary); margin-top: 10px;">✓ Cozy local spot</p>
+                    </div>
+                </div>
+
+                <div class="eco-tip">
+                    <strong>🥐 Finnish Breakfast Specialties:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>Korvapuusti</strong> - Finské skořicové šneky (MUST TRY!)</li>
+                        <li><strong>Karjalanpiirakka</strong> - Karelian pies s vajíčkovým máslem</li>
+                        <li><strong>Ruisleipä</strong> - Tmavý žitný chléb</li>
+                        <li><strong>Puuro</strong> - Finnish porridge (často ovesná nebo žitná)</li>
+                        <li><strong>Lohikeitto</strong> - Lososová polévka (na brunch)</li>
+                    </ul>
+                </div>
+                
+                <div class="success-box">
+                    <strong>💚 Naše doporučení pro vás:</strong><br>
+                    Sobota ráno (18.10): <strong>Way Bakery</strong> nebo <strong>Levain</strong> - hipster brunch experience<br>
+                    Neděle ráno (19.10): <strong>Cafe Engel</strong> - snídaně s výhledem na katedrálu před odjezdem
+                </div>
+            </div>
+        </div>
+
+        <!-- ITINERARY TAB - zkrácená verze -->
         <div id="itinerary" class="tab-content">
             <div class="eco-card">
                 <h2 style="color: var(--forest-dark); margin-bottom: 25px;">📅 Denní program</h2>
@@ -788,170 +871,6 @@
                     <div class="time-slot">
                         <strong>19:30</strong> - Večeře Etno Dvaras (cepelinai!)
                     </div>
-                    <div class="time-slot">
-                        <strong>21:00</strong> - Večerní procházka Old Town
-                    </div>
-                </div>
-
-                <h4 style="color: var(--earth-brown);">Den 2 - Sobota 11.10. - Exploring</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>08:00</strong> - Snídaně v hotelu
-                    </div>
-                    <div class="time-slot">
-                        <strong>09:30</strong> - Gedimino hrad & výhledy
-                    </div>
-                    <div class="time-slot">
-                        <strong>11:00</strong> - Katedrála & náměstí
-                    </div>
-                    <div class="time-slot">
-                        <strong>12:30</strong> - Brunch v Pirmas Blynas
-                    </div>
-                    <div class="time-slot">
-                        <strong>14:30</strong> - Užupis čtvrť (vlastní ústava!)
-                    </div>
-                    <div class="time-slot">
-                        <strong>17:00</strong> - St. Anne's Church
-                    </div>
-                    <div class="time-slot">
-                        <strong>19:00</strong> - Večeře v lokální pivnici
-                    </div>
-                </div>
-
-                <h4 style="color: var(--earth-brown);">Den 3 - Neděle 12.10. - Transfer do Rigy</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>08:00</strong> - Check-out, snídaně
-                    </div>
-                    <div class="time-slot">
-                        <strong>09:00</strong> - KGB Museum (optional)
-                    </div>
-                    <div class="time-slot">
-                        <strong>11:00-11:30</strong> - Lux Express do Rigy
-                    </div>
-                    <div class="time-slot">
-                        <strong>15:30</strong> - Příjezd Riga
-                    </div>
-                    <div class="time-slot">
-                        <strong>16:00</strong> - Check-in Baltic Design Apartments
-                    </div>
-                    <div class="time-slot">
-                        <strong>18:00</strong> - Procházka Old Town
-                    </div>
-                    <div class="time-slot">
-                        <strong>19:30</strong> - Folkklubs večeře
-                    </div>
-                </div>
-
-                <div class="city-header riga-header">
-                    <h3>RIGA | 12.-15. října</h3>
-                </div>
-
-                <h4 style="color: var(--ocean-blue);">Den 4 - Pondělí 13.10. - Art Nouveau Day</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>09:00</strong> - Alberta iela (nejkrásnější secese)
-                    </div>
-                    <div class="time-slot">
-                        <strong>11:00</strong> - Art Nouveau Museum
-                    </div>
-                    <div class="time-slot">
-                        <strong>13:00</strong> - Lunch v MiiT Coffee
-                    </div>
-                    <div class="time-slot">
-                        <strong>15:00</strong> - Central Market v hangárech
-                    </div>
-                    <div class="time-slot">
-                        <strong>17:00</strong> - Dóm & náměstí
-                    </div>
-                    <div class="time-slot">
-                        <strong>19:00</strong> - Black Balsam tasting
-                    </div>
-                </div>
-
-                <h4 style="color: var(--ocean-blue);">Den 5 - Úterý 14.10. - Jūrmala nebo Sigulda</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>Varianta A:</strong> Jūrmala (pokud hezky)
-                    </div>
-                    <div class="time-slot">
-                        <strong>09:00</strong> - Vlak do Jūrmaly (€3, 30 min)
-                    </div>
-                    <div class="time-slot">
-                        <strong>10:00</strong> - Procházka po pláži
-                    </div>
-                    <div class="time-slot">
-                        <strong>12:00</strong> - Jomas ulice, oběd
-                    </div>
-                    <div class="time-slot">
-                        <strong>15:00</strong> - Návrat do Rigy
-                    </div>
-                    <div class="time-slot" style="margin-top: 20px;">
-                        <strong>Varianta B:</strong> Sigulda (máte auto!)
-                    </div>
-                    <div class="time-slot">
-                        <strong>09:00</strong> - Cesta autem (1h)
-                    </div>
-                    <div class="time-slot">
-                        <strong>10:00</strong> - Turaida hrad
-                    </div>
-                    <div class="time-slot">
-                        <strong>14:00</strong> - Gauja National Park
-                    </div>
-                </div>
-
-                <div class="city-header tallinn-header">
-                    <h3>TALLINN | 15.-17. října</h3>
-                </div>
-
-                <h4 style="color: var(--eco-secondary);">Den 6 - Středa 15.10. - Transfer do Tallinnu</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>09:00</strong> - Poslední nákupy v Rize
-                    </div>
-                    <div class="time-slot">
-                        <strong>10:30</strong> - Check-out
-                    </div>
-                    <div class="time-slot">
-                        <strong>12:00</strong> - Lux Express do Tallinnu
-                    </div>
-                    <div class="time-slot">
-                        <strong>16:00</strong> - Příjezd Tallinn
-                    </div>
-                    <div class="time-slot">
-                        <strong>17:00</strong> - Check-in Sume by Larsen
-                    </div>
-                    <div class="time-slot">
-                        <strong>18:00</strong> - Telliskivi Creative City
-                    </div>
-                    <div class="time-slot">
-                        <strong>19:30</strong> - F-Hoone večeře
-                    </div>
-                </div>
-
-                <h4 style="color: var(--eco-secondary);">Den 7 - Čtvrtek 16.10. - Medieval Tallinn</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>09:00</strong> - RØST Bakery breakfast
-                    </div>
-                    <div class="time-slot">
-                        <strong>10:00</strong> - Toompea hrad & výhledy
-                    </div>
-                    <div class="time-slot">
-                        <strong>12:00</strong> - Town Hall Square
-                    </div>
-                    <div class="time-slot">
-                        <strong>13:00</strong> - Olde Hansa lunch
-                    </div>
-                    <div class="time-slot">
-                        <strong>15:00</strong> - St. Olaf's Church
-                    </div>
-                    <div class="time-slot">
-                        <strong>17:00</strong> - Kadriorg Park (pokud čas)
-                    </div>
-                    <div class="time-slot">
-                        <strong>19:00</strong> - Rataskaevu 16 večeře
-                    </div>
                 </div>
 
                 <div class="city-header helsinki-header">
@@ -961,16 +880,7 @@
                 <h4 style="color: #8b5cf6;">Den 8 - Pátek 17.10. - Ferry to Helsinki</h4>
                 <div class="day-schedule">
                     <div class="time-slot">
-                        <strong>09:00</strong> - Check-out
-                    </div>
-                    <div class="time-slot">
-                        <strong>10:00</strong> - Poslední káva v Tallinnu
-                    </div>
-                    <div class="time-slot">
-                        <strong>12:00</strong> - Přesun do přístavu
-                    </div>
-                    <div class="time-slot">
-                        <strong>13:30</strong> - Trajekt do Helsinek
+                        <strong>13:30</strong> - Trajekt do Helsinek (Tallink Silja)
                     </div>
                     <div class="time-slot">
                         <strong>15:30</strong> - Příjezd Helsinki
@@ -981,61 +891,11 @@
                     <div class="time-slot">
                         <strong>18:00</strong> - Löyly Sauna (rezervujte!)
                     </div>
-                    <div class="time-slot">
-                        <strong>20:30</strong> - Večeře v Löyly
-                    </div>
-                </div>
-
-                <h4 style="color: #8b5cf6;">Den 9 - Sobota 18.10. - Helsinki Highlights</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>08:00</strong> - Snídaně v hotelu
-                    </div>
-                    <div class="time-slot">
-                        <strong>09:30</strong> - Senate Square & Cathedral
-                    </div>
-                    <div class="time-slot">
-                        <strong>11:00</strong> - Temppeliaukio (rock church)
-                    </div>
-                    <div class="time-slot">
-                        <strong>12:30</strong> - Market Square lunch
-                    </div>
-                    <div class="time-slot">
-                        <strong>14:00</strong> - Suomenlinna fortress (ferry)
-                    </div>
-                    <div class="time-slot">
-                        <strong>17:00</strong> - Design District shopping
-                    </div>
-                    <div class="time-slot">
-                        <strong>19:00</strong> - Savotta restaurant
-                    </div>
-                </div>
-
-                <h4 style="color: #8b5cf6;">Den 10 - Neděle 19.10. - Departure</h4>
-                <div class="day-schedule">
-                    <div class="time-slot">
-                        <strong>08:00</strong> - Snídaně & check-out
-                    </div>
-                    <div class="time-slot">
-                        <strong>09:00</strong> - Check-out
-                    </div>
-                    <div class="time-slot">
-                        <strong>10:00</strong> - Vlak na letiště (30 min)
-                    </div>
-                    <div class="time-slot">
-                        <strong>11:00</strong> - Check-in na letišti
-                    </div>
-                    <div class="time-slot">
-                        <strong>13:00</strong> - Odlet do Vídně
-                    </div>
-                    <div class="time-slot">
-                        <strong>14:45</strong> - Přílet Vídeň
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- TRANSPORT TAB -->
+        <!-- TRANSPORT TAB - aktualizované -->
         <div id="transport" class="tab-content">
             <div class="eco-card">
                 <h2 style="color: var(--forest-dark); margin-bottom: 25px;">🚌 Meziměstská doprava</h2>
@@ -1044,12 +904,12 @@
                     <h3 style="color: var(--eco-primary);">Vilnius → Riga</h3>
                     <p><strong>Datum:</strong> 12. října 2025</p>
                     <p><strong>Doporučený čas:</strong> 11:00-11:30</p>
-                    <p><strong>Trvání:</strong> 4-4.5 hodiny</p>
-                    <p><strong>Cena:</strong> €20-30</p>
+                    <p><strong>Trvání:</strong> 4 hodiny</p>
+                    <p><strong>Cena:</strong> €18-30</p>
                     <p><strong>Dopravce:</strong> Lux Express</p>
                     <div class="eco-score" style="margin-top: 15px;">
                         <span class="eco-leaf">🌿🌿🌿🌿</span>
-                        <span>Premium busy s Wi-Fi, kávou, WC</span>
+                        <span>Premium busy s Wi-Fi, kávou, WC, entertainment screens</span>
                     </div>
                     <p style="margin-top: 10px;">
                         <a href="https://luxexpress.eu" style="color: var(--eco-primary);">→ Rezervovat na luxexpress.eu</a>
@@ -1060,16 +920,9 @@
                     <h3 style="color: var(--eco-primary);">Riga → Tallinn</h3>
                     <p><strong>Datum:</strong> 15. října 2025</p>
                     <p><strong>Doporučený čas:</strong> 12:00</p>
-                    <p><strong>Trvání:</strong> 4 hodiny</p>
-                    <p><strong>Cena:</strong> €20-30</p>
+                    <p><strong>Trvání:</strong> 4 hodiny 20 minut</p>
+                    <p><strong>Cena:</strong> €19-30</p>
                     <p><strong>Dopravce:</strong> Lux Express</p>
-                    <div class="eco-score" style="margin-top: 15px;">
-                        <span class="eco-leaf">🌿🌿🌿🌿</span>
-                        <span>Pohodlné sedačky, lze sklopit</span>
-                    </div>
-                    <p style="margin-top: 10px;">
-                        <a href="https://luxexpress.eu" style="color: var(--eco-primary);">→ Rezervovat na luxexpress.eu</a>
-                    </p>
                 </div>
 
                 <div class="transport-card ferry-card">
@@ -1077,14 +930,14 @@
                     <p><strong>Datum:</strong> 17. října 2025</p>
                     <p><strong>Doporučený čas:</strong> 13:30 nebo 15:30</p>
                     <p><strong>Trvání:</strong> 2 hodiny</p>
-                    <p><strong>Cena:</strong> €35-50</p>
+                    <p><strong>Cena:</strong> €35-50 (deck seating)</p>
                     <p><strong>Dopravce:</strong> Tallink Silja nebo Viking Line</p>
                     <div class="eco-score" style="margin-top: 15px;">
                         <span class="eco-leaf">🌿🌿🌿</span>
-                        <span>Duty-free shop, restaurace na palubě</span>
+                        <span>Duty-free shop, restaurace na palubě, až 2800 pasažérů!</span>
                     </div>
                     <p style="margin-top: 10px;">
-                        <a href="https://www.tallinksilja.com" style="color: var(--ocean-blue);">→ Tallink Silja</a> | 
+                        <a href="https://www.tallink.com" style="color: var(--ocean-blue);">→ Tallink Silja</a> | 
                         <a href="https://www.vikingline.com" style="color: var(--ocean-blue);">→ Viking Line</a>
                     </p>
                 </div>
@@ -1093,10 +946,10 @@
                     <strong>🚌 Transport Tips:</strong>
                     <ul style="margin-top: 10px;">
                         <li>Rezervujte 2-4 týdny předem pro lepší ceny</li>
-                        <li>Lux Express má často slevy při včasné rezervaci</li>
-                        <li>V busech funguje Wi-Fi (většinou)</li>
+                        <li>Lux Express má slevy při včasné rezervaci (až -30%)</li>
+                        <li>V busech funguje Wi-Fi a entertainment systém</li>
                         <li>Na trajektu deck seating stačí (2h cesta)</li>
-                        <li>MHD: Bolt/Uber funguje všude a je levný</li>
+                        <li>Check-in na trajekt online 24h předem (ušetříte €5)</li>
                     </ul>
                 </div>
             </div>
@@ -1127,42 +980,20 @@
                     <span>€300-350</span>
                 </div>
                 
+                <div class="budget-item" style="background: #fee2e2;">
+                    <span>🥐 Helsinki snídaně (2 dny)</span>
+                    <span><strong>€30-40 EXTRA!</strong></span>
+                </div>
+                
                 <div class="budget-item">
                     <span>☕ Kavárny & brunche</span>
                     <span>€80-100</span>
                 </div>
                 
-                <div class="budget-item">
-                    <span>🎫 Vstupy & aktivity</span>
-                    <span>€100-120</span>
-                </div>
-                
-                <div class="budget-item">
-                    <span>🚇 MHD ve městech</span>
-                    <span>€40-50</span>
-                </div>
-                
-                <div class="budget-item">
-                    <span>🛍️ Suvenýry & ostatní</span>
-                    <span>€50-100</span>
-                </div>
-                
                 <div class="budget-total">
-                    <strong>CELKEM: €1,350-1,500 / osoba</strong><br>
-                    <span style="font-size: 0.9rem;">~34,000-37,500 Kč při kurzu 25 Kč/€</span>
-                </div>
-
-                <div class="eco-tip">
-                    <strong>💸 Jak ušetřit:</strong>
-                    <ul style="margin-top: 10px;">
-                        <li><strong>Snídaně:</strong> Máte v hotelu (Vilnius & Helsinki)</li>
-                        <li><strong>Riga:</strong> Apartmán = nakupte v Rimi/Maxima</li>
-                        <li><strong>Obědy:</strong> Business lunch 11:30-15:00 (€7-10)</li>
-                        <li><strong>Kavárny:</strong> Filter coffee místo cappuccina (-€1-2)</li>
-                        <li><strong>Happy hours:</strong> Pivo 17:00-19:00 (50% sleva)</li>
-                        <li><strong>City cards:</strong> Nevyplatí se na 2 dny</li>
-                        <li><strong>Muzea:</strong> Studenti/senioři slevy (pas s sebou)</li>
-                    </ul>
+                    <strong>CELKEM: €1,350-1,550 / osoba</strong><br>
+                    <span style="font-size: 0.9rem;">~34,000-39,000 Kč při kurzu 25 Kč/€</span><br>
+                    <span style="font-size: 0.85rem; color: #fbbf24;">+ €30-40 na Helsinki snídaně!</span>
                 </div>
             </div>
         </div>
@@ -1172,28 +1003,29 @@
             <div class="eco-card">
                 <h2 style="color: var(--forest-dark); margin-bottom: 25px;">🎒 Sustainable Packing List</h2>
                 
-                <div style="background: #fee2e2; padding: 15px; border-radius: 15px; margin-bottom: 20px;">
-                    <strong>🌡️ Říjen v Pobaltí: 5-15°C, často prší, brzy tma!</strong>
+                <div class="warning-box">
+                    <strong>🌡️ AKTUALIZACE: Říjen bude chladnější!</strong><br>
+                    Počítejte s 5-12°C, hodně deště, brzy tma (18:00)!
                 </div>
                 
                 <div class="packing-grid">
                     <div class="packing-section">
-                        <h4 style="color: var(--forest-dark); margin-bottom: 15px;">👕 Oblečení</h4>
+                        <h4 style="color: var(--forest-dark); margin-bottom: 15px;">👕 Oblečení - UPDATED</h4>
                         <div class="packing-item">
                             <input type="checkbox" id="p1">
                             <label for="p1">Nepromokavá bunda (NUTNOST!)</label>
                         </div>
                         <div class="packing-item">
-                            <input type="checkbox" id="p2">
-                            <label for="p2">Teplý svetr/fleece</label>
+                            <input type="checkbox" id="p2a">
+                            <label for="p2a">TEPLÝ svetr/fleece (ne jen lehký!)</label>
+                        </div>
+                        <div class="packing-item">
+                            <input type="checkbox" id="p2b">
+                            <label for="p2b">Vrstvené oblečení (cibule)</label>
                         </div>
                         <div class="packing-item">
                             <input type="checkbox" id="p3">
-                            <label for="p3">Pohodlné boty (hodně chodíte)</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p4">
-                            <label for="p4">Náhradní boty</label>
+                            <label for="p3">Pohodlné VODĚODOLNÉ boty</label>
                         </div>
                         <div class="packing-item">
                             <input type="checkbox" id="p5">
@@ -1201,75 +1033,11 @@
                         </div>
                         <div class="packing-item">
                             <input type="checkbox" id="p6">
-                            <label for="p6">Šála & rukavice</label>
+                            <label for="p6">Šála & rukavice (URČITĚ!)</label>
                         </div>
                         <div class="packing-item">
                             <input type="checkbox" id="p7">
-                            <label for="p7">Plavky (sauna!)</label>
-                        </div>
-                    </div>
-                    
-                    <div class="packing-section">
-                        <h4 style="color: var(--forest-dark); margin-bottom: 15px;">📱 Tech & dokumenty</h4>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p8">
-                            <label for="p8">Pas/občanka</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p9">
-                            <label for="p9">Cestovní pojištění</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p10">
-                            <label for="p10">Hotelové rezervace</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p11">
-                            <label for="p11">Powerbank</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p12">
-                            <label for="p12">Nabíječky</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p13">
-                            <label for="p13">Sluchátka</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p14">
-                            <label for="p14">Adaptér (není potřeba)</label>
-                        </div>
-                    </div>
-                    
-                    <div class="packing-section">
-                        <h4 style="color: var(--forest-dark); margin-bottom: 15px;">🌿 Eco essentials</h4>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p15">
-                            <label for="p15">Láhev na vodu (opakovaná)</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p16">
-                            <label for="p16">Látková taška na nákupy</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p17">
-                            <label for="p17">Vlastní hrnek na kávu</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p18">
-                            <label for="p18">Pevné mýdlo/šampon</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p19">
-                            <label for="p19">Bambusový kartáček</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p20">
-                            <label for="p20">Malý batoh na výlety</label>
-                        </div>
-                        <div class="packing-item">
-                            <input type="checkbox" id="p21">
-                            <label for="p21">€100 hotovost</label>
+                            <label for="p7">Plavky (sauna v Helsinkách!)</label>
                         </div>
                     </div>
                 </div>
@@ -1281,141 +1049,45 @@
             <div class="eco-card">
                 <h2 style="color: var(--forest-dark); margin-bottom: 25px;">🎯 Top aktivity & must-see</h2>
                 
-                <div class="city-header vilnius-header">
-                    <h3>VILNIUS Must-Do</h3>
-                </div>
-                <ul style="list-style: none; padding: 20px;">
-                    <li>🏰 <strong>Gedimino hrad</strong> - výhled na město (€8)</li>
-                    <li>🎨 <strong>Užupis</strong> - bohémská čtvrť s vlastní ústavou</li>
-                    <li>⛪ <strong>St. Anne's Church</strong> - gotický skvost</li>
-                    <li>🏛️ <strong>KGB Museum</strong> - bývalé vězení (€6)</li>
-                    <li>🍺 <strong>Tradiční večeře</strong> - cepelinai v Etno Dvaras</li>
-                </ul>
-
-                <div class="city-header riga-header">
-                    <h3>RIGA Must-Do</h3>
-                </div>
-                <ul style="list-style: none; padding: 20px;">
-                    <li>🏛️ <strong>Alberta iela</strong> - nejlepší Art Nouveau v Evropě</li>
-                    <li>🛍️ <strong>Central Market</strong> - v historických hangárech</li>
-                    <li>🏖️ <strong>Jūrmala</strong> - pokud hezky (vlak €3)</li>
-                    <li>🍺 <strong>Black Balsam</strong> - ochutnat místní likér</li>
-                    <li>🏰 <strong>Sigulda</strong> - autem do "lotyšského Švýcarska"</li>
-                </ul>
-
-                <div class="city-header tallinn-header">
-                    <h3>TALLINN Must-Do</h3>
-                </div>
-                <ul style="list-style: none; padding: 20px;">
-                    <li>🏰 <strong>Toompea Hill</strong> - výhledy Kohtuotsa & Patkuli</li>
-                    <li>🎨 <strong>Telliskivi Creative City</strong> - hipster paradise</li>
-                    <li>⛪ <strong>Alexander Nevsky Cathedral</strong></li>
-                    <li>🍽️ <strong>Olde Hansa</strong> - středověká večeře</li>
-                    <li>🌳 <strong>Kadriorg Park</strong> - pokud zbyde čas</li>
-                </ul>
-
                 <div class="city-header helsinki-header">
                     <h3>HELSINKI Must-Do</h3>
                 </div>
                 <ul style="list-style: none; padding: 20px;">
                     <li>🧖 <strong>Löyly Sauna</strong> - NUTNOST! Rezervujte online (€26)</li>
-                    <li>🏰 <strong>Suomenlinna</strong> - pevnost na ostrově</li>
+                    <li>🏰 <strong>Suomenlinna</strong> - pevnost na ostrově (ferry included v day ticket)</li>
                     <li>⛪ <strong>Temppeliaukio</strong> - kostel ve skále</li>
                     <li>🛍️ <strong>Design District</strong> - skandinávský design</li>
-                    <li>🍽️ <strong>Savotta</strong> - finská kuchyně</li>
+                    <li>🥐 <strong>Way Bakery / Levain</strong> - nejlepší brunche!</li>
+                    <li>☕ <strong>Cafe Engel</strong> - snídaně s výhledem na katedrálu</li>
                 </ul>
-
-                <div class="eco-tip">
-                    <strong>🎫 Vstupy & City Cards:</strong>
-                    <ul style="margin-top: 10px;">
-                        <li><strong>Vilnius Pass:</strong> Nevyplatí se</li>
-                        <li><strong>Riga Pass:</strong> Nevyplatí se</li>
-                        <li><strong>Tallinn Card:</strong> €45/48h - možná ano (muzea + MHD)</li>
-                        <li><strong>Helsinki Card:</strong> €69/48h - spíš ne na 2 dny</li>
-                        <li><strong>Tip:</strong> Většina kostelů zdarma, výhledy zdarma</li>
-                    </ul>
-                </div>
             </div>
         </div>
 
         <!-- TIPS TAB -->
         <div id="tips" class="tab-content">
             <div class="eco-card">
-                <h2 style="color: var(--forest-dark); margin-bottom: 25px;">💡 Praktické tipy</h2>
+                <h2 style="color: var(--forest-dark); margin-bottom: 25px;">💡 Praktické tipy - AKTUALIZOVÁNO</h2>
                 
-                <div style="display: grid; gap: 20px;">
-                    <div class="eco-tip">
-                        <strong>📱 Aplikace co fungují:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li><strong>Bolt</strong> - taxi & e-scootery (všude, levné)</li>
-                            <li><strong>Maps.me</strong> - offline mapy (stáhněte předem)</li>
-                            <li><strong>Google Translate</strong> - offline jazyky</li>
-                            <li><strong>Revolut/Wise</strong> - nejlepší kurz</li>
-                            <li><strong>Citymapper</strong> - MHD v Helsinkách</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="eco-tip">
-                        <strong>🍽️ Co ochutnat:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li><strong>Vilnius:</strong> Cepelinai, šaltibarščiai (studená řepa)</li>
-                            <li><strong>Riga:</strong> Grey peas with bacon, Riga Black Balsam</li>
-                            <li><strong>Tallinn:</strong> Kohuke (€0.50!), elk meat, Vana Tallinn</li>
-                            <li><strong>Helsinki:</strong> Lohikeitto (losos), korvapuusti, poronkäristys (sob)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="eco-tip">
-                        <strong>💰 Money & tipping:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li>Karty berou všude (i WC 50 centů)</li>
-                            <li>Spropitné 10% jen když super servis</li>
-                            <li>Bankomaty: Swedbank, SEB (bez poplatků)</li>
-                            <li>Obchody: Rimi, Maxima (levné)</li>
-                            <li>Alkohol levnější než ČR (kromě Finska!)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="eco-tip">
-                        <strong>🌧️ Když prší:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li><strong>Vilnius:</strong> MO Museum, Genocide Museum</li>
-                            <li><strong>Riga:</strong> Central Market, Art Nouveau Museum</li>
-                            <li><strong>Tallinn:</strong> Telliskivi (kryté), Estonian History Museum</li>
-                            <li><strong>Helsinki:</strong> Ateneum, Kiasma, Design Museum</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="eco-tip">
-                        <strong>🗣️ Jazyk & komunikace:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li><strong>Angličtina:</strong> OK všude kromě starší generace</li>
-                            <li><strong>Ruština:</strong> Rozumí hodně lidí (ale ne všichni rádi)</li>
-                            <li><strong>Dobrý den:</strong> Labas (LT), Sveiki (LV), Tere (EE), Hei (FI)</li>
-                            <li><strong>Děkuji:</strong> Ačiū (LT), Paldies (LV), Aitäh (EE), Kiitos (FI)</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="background: #fee2e2; padding: 20px; border-radius: 15px;">
-                        <strong>⚠️ Pozor na:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li>Tallinn Old Town = turistické pasti (2x ceny)</li>
-                            <li>Neděle = hodně zavřeno (plánujte)</li>
-                            <li>Löyly sauna - MUSÍ se rezervovat!</li>
-                            <li>Trajekt - kupte online (ušetříte)</li>
-                            <li>Říjen = brzy tma (18:00)</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="background: #dcfce7; padding: 20px; border-radius: 15px;">
-                        <strong>🆘 Emergency:</strong>
-                        <ul style="margin-top: 10px;">
-                            <li><strong>112</strong> - funguje všude v EU</li>
-                            <li><strong>Lékárna:</strong> Apteek (EE), Aptieka (LV/LT)</li>
-                            <li><strong>Nemocnice:</strong> Všude berou EHIC kartu</li>
-                            <li><strong>České ambasády:</strong> Jsou ve všech hlavních městech</li>
-                        </ul>
-                    </div>
+                <div class="warning-box">
+                    <strong>⚠️ DŮLEŽITÉ ZMĚNY:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>VALO Hotel Helsinki NEMÁ snídani - plánujte brunche!</li>
+                        <li>Počasí bude chladnější než v HTML - 5-12°C, ne 8-15°C</li>
+                        <li>V říjnu tma už v 18:00 - plánujte aktivity brzy</li>
+                        <li>Löyly sauna - rezervujte HNED online!</li>
+                        <li>Trajekt Tallinn-Helsinki - check-in online 24h předem</li>
+                    </ul>
+                </div>
+                
+                <div class="success-box">
+                    <strong>✅ Co funguje skvěle:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>Lux Express - pohodlné busy, Wi-Fi, káva</li>
+                        <li>Hotely - všechny adresy správné, potvrzené</li>
+                        <li>Bolt taxi - funguje všude, levné</li>
+                        <li>Karty berou všude (i 50 centů WC)</li>
+                        <li>Helsinki Card - €69/48h možná se vyplatí</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1435,31 +1107,35 @@
                 attribution: '© OpenStreetMap contributors'
             }).addTo(map);
             
-            // Hotel locations
+            // Hotel locations - SPRÁVNÉ SOUŘADNICE
             const hotels = [
                 {
                     city: 'vilnius',
                     name: 'Best Western Vilnius',
                     coords: [54.6965, 25.2802],
-                    address: 'Konstitucijos pr. 14'
+                    address: 'Konstitucijos pr. 14',
+                    breakfast: 'Snídaně v ceně!'
                 },
                 {
                     city: 'riga',
                     name: 'Baltic Design Apartments',
                     coords: [56.9590, 24.1316],
-                    address: 'Brīvības iela 148'
+                    address: 'Brīvības iela 148',
+                    breakfast: 'Apartmán - vlastní snídaně'
                 },
                 {
                     city: 'tallinn',
                     name: 'Sume by Larsen',
                     coords: [59.4245, 24.7200],
-                    address: 'Ehitajate tee 140'
+                    address: 'Ehitajate tee 140',
+                    breakfast: 'Kavárny v okolí'
                 },
                 {
                     city: 'helsinki',
                     name: 'VALO Hotel & Work',
                     coords: [60.1870, 24.9317],
-                    address: 'Mannerheimintie 109'
+                    address: 'Mannerheimintie 109',
+                    breakfast: 'BEZ SNÍDANĚ - viz naše tipy!'
                 }
             ];
             
@@ -1476,7 +1152,8 @@
                     <div style="text-align: center;">
                         <strong>${hotel.name}</strong><br>
                         ${hotel.address}<br>
-                        <span style="color: #059669;">✓ Potvrzeno</span>
+                        <span style="color: #059669;">✓ Potvrzeno</span><br>
+                        <span style="color: #dc2626; font-weight: bold;">${hotel.breakfast}</span>
                     </div>
                 `);
                 markers[hotel.city] = marker;
@@ -1564,6 +1241,12 @@
                 localStorage.setItem(this.id, this.checked);
             });
         });
+        
+        // Toggle hotel info
+        function toggleHotelInfo(city) {
+            // Zde můžete přidat další interaktivitu
+            console.log('Hotel clicked:', city);
+        }
     </script>
 </body>
 </html>
